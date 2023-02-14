@@ -26,6 +26,7 @@ train_data_file = open('intents.json')
 data = json.load(train_data_file)
 train_data_file.close()
 
+
 # criando função para stemizar palavras
 def get_stem_words(words, ignore_words):
     stem_words = []
@@ -45,17 +46,14 @@ def get_stem_words(words, ignore_words):
     return stem_words
 
 
-'''
-Lista de palavras-tronco ordenadas para nosso conjunto de dados : 
 
+#Lista de palavras-tronco ordenadas para nosso conjunto de dados : 
+stem_words = get_stem_words(words, ignore_words)
 ['tudo', 'alg', 'algue', 'são', 'incríve', 'ser', 'melhor', 'bluetooth', 'tchau', 'camera', 'pode', 'chat',
 'legal', 'poderia', 'dígito', 'fazer', 'para', 'jogo', 'adeu', 'ter', 'fone de ouvid', 'ola', 'ajudar', 'ei',
 'oi', 'ola', 'como', 'e', 'depois', 'ultimo', 'eu', 'mais', 'proximo', 'legal', 'telefone', 'favo', 'popular ',
 'produto', 'fornec', 'ver', 'vender', 'mostrar', 'smartphon', 'dizer', 'agradecer', 'isso', 'o', 'la',
 'ate', 'tempo', 'até', 'tende', 'vídeo', 'que', 'qual', 'voce', 'seu']
-
-'''
-
 
 # criando uma função para criar o corpus
 def create_bot_corpus(words, classes, pattern_word_tags_list, ignore_words):
