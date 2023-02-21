@@ -26,7 +26,6 @@ train_data_file = open('intents.json')
 data = json.load(train_data_file)
 train_data_file.close()
 
-
 # criando função para stemizar palavras
 def get_stem_words(words, ignore_words):
     stem_words = []
@@ -44,8 +43,6 @@ def get_stem_words(words, ignore_words):
             w = stemmer.stem(word.lower())
             stem_words.append(w)  
     return stem_words
-
-
 
 #Lista de palavras-tronco ordenadas para nosso conjunto de dados : 
 stem_words = get_stem_words(words, ignore_words)
@@ -144,7 +141,8 @@ def preprocess_train_data():
     stem_words, tag_classes, word_tags_list = create_bot_corpus(words, classes, pattern_word_tags_list, ignore_words)
     
     # Converta as palavras-tronco e a lista classes para o formato de arquivo Python pickle
-    
+    pickle.dump(stem_words,open('words.pkl','wb'))
+    pickle.dump(tag_classes,open('words.pkl','wb'))
 
     train_x = bag_of_words_encoding(stem_words, word_tags_list)
     train_y = class_label_encoding(tag_classes, word_tags_list)
